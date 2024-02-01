@@ -3,19 +3,21 @@ package com.modifiedleftclickdropper;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.inject.Provides;
-import javax.inject.Inject;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.*;
+imimport lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.GameState;
+import net.runelite.api.MenuAction;
+import net.runelite.api.MenuEntry;
 import net.runelite.api.events.ClientTick;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.inventorygrid.InventoryGridPlugin;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.Text;
 
+import javax.inject.Inject;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,7 +45,7 @@ public class ModifiedLeftClickDropper extends Plugin
 
 	private HashSet<String> releaseItems;
 
-	private Splitter CONFIG_SPLITTER = Splitter
+	private final Splitter CONFIG_SPLITTER = Splitter
 			.onPattern("([,\n])")
 			.omitEmptyStrings()
 			.trimResults();
@@ -59,7 +61,7 @@ public class ModifiedLeftClickDropper extends Plugin
 		List<String> masterFarmerModeDrops = patternizeList("*seed,*spore");
 		List<String> masterFarmerModeExclusions = patternizeList("Ranarr seed,Snapdragon seed,Irit seed,Cadantine seed,Avantoe seed," +
 				"Kwuarm seed,Lantadyme seed,Torstol seed,Dwarf weed seed,Snape grass seed,Watermelon seed,Jangerberry seed," +
-				"Whiteberry seed,Poison ivy seed,Willow seed,Maple seed,Yew seed,Mahogany seed,*tree seed");
+				"Whiteberry seed,Poison ivy seed,Willow seed,Maple seed,Yew seed,Magic seed,Mahogany seed,*tree seed,Hespori seed");
 
 		if (fishingMode) {
 			itemList.addAll(fishingModeDrops);
@@ -68,6 +70,7 @@ public class ModifiedLeftClickDropper extends Plugin
 			itemList.addAll(masterFarmerModeDrops);
 			excludeList.addAll(masterFarmerModeExclusions);
 		}
+
 	}
 	@Subscribe
 	public void onClientTick(ClientTick clientTick) {
@@ -94,7 +97,7 @@ public class ModifiedLeftClickDropper extends Plugin
 		itemName = itemName.toLowerCase();
 		for (String excludeItem : excludeList) {
 			if (itemName.matches(excludeItem)) {
-				return false; // Return false if a match is found in excludeList
+				return false;
 			}
 		}
 		for (String includedItem : itemList) {
