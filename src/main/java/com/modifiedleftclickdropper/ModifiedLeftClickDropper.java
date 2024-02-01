@@ -3,7 +3,7 @@ package com.modifiedleftclickdropper;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.inject.Provides;
-imimport lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.MenuAction;
