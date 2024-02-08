@@ -61,7 +61,7 @@ public class ModifiedLeftClickDropper extends Plugin
 		List<String> masterFarmerModeDrops = patternizeList("*seed,*spore");
 		List<String> masterFarmerModeExclusions = patternizeList("Ranarr seed,Snapdragon seed,Irit seed,Cadantine seed,Avantoe seed," +
 				"Kwuarm seed,Lantadyme seed,Torstol seed,Dwarf weed seed,Snape grass seed,Watermelon seed,Jangerberry seed," +
-				"Whiteberry seed,Poison ivy seed,Willow seed,Maple seed,Yew seed,Magic seed,Mahogany seed,*tree seed,Hespori seed");
+				"Whiteberry seed,Poison ivy seed,Willow seed,Maple seed,Yew seed,Magic seed,Mahogany seed,*tree seed,Hespori seed,Spirit seed");
 
 		if (fishingMode) {
 			itemList.addAll(fishingModeDrops);
@@ -157,7 +157,7 @@ public class ModifiedLeftClickDropper extends Plugin
 			entries[idxA] = entry1;
 			entries[idxB] = entry2;
 
-			// Item op4 and op5 are CC_OP_LOW_PRIORITY so they get added underneath Use,
+			// Item op4 and op5 are CC_OP_LOW_PRIORITY, so they get added underneath Use,
 			// but this also causes them to get sorted after client tick. Change them to
 			// CC_OP to avoid this.
 			if (entry1.isItemOp() && entry1.getType() == MenuAction.CC_OP_LOW_PRIORITY) {
