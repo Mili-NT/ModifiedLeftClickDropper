@@ -61,7 +61,8 @@ public class ModifiedLeftClickDropper extends Plugin
 		List<String> masterFarmerModeDrops = patternizeList("*seed,*spore");
 		List<String> masterFarmerModeExclusions = patternizeList("Ranarr seed,Snapdragon seed,Irit seed,Cadantine seed,Avantoe seed," +
 				"Kwuarm seed,Lantadyme seed,Torstol seed,Dwarf weed seed,Snape grass seed,Watermelon seed,Jangerberry seed," +
-				"Whiteberry seed,Poison ivy seed,Willow seed,Maple seed,Yew seed,Magic seed,Mahogany seed,*tree seed,Hespori seed,Spirit seed");
+				"Whiteberry seed,Poison ivy seed,Willow seed,Maple seed,Yew seed,Magic seed,Mahogany seed,*tree seed,Hespori seed," +
+				"Spirit seed,Pineapple seed,Teak seed");
 
 		if (fishingMode) {
 			itemList.addAll(fishingModeDrops);
