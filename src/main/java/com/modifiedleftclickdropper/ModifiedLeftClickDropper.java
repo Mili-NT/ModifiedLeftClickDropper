@@ -58,6 +58,7 @@ public class ModifiedLeftClickDropper extends Plugin
 	}
 	public void applyModes() {
 		List<String> fishingModeDrops = patternizeList("Raw*");
+		List<String> fishingModeExclusions = patternizeList("Raw* pie");
 		List<String> masterFarmerModeDrops = patternizeList("*seed,*spore");
 		List<String> masterFarmerModeExclusions = patternizeList("Ranarr seed,Snapdragon seed,Irit seed,Cadantine seed,Avantoe seed," +
 				"Kwuarm seed,Lantadyme seed,Torstol seed,Dwarf weed seed,Snape grass seed,Watermelon seed,Jangerberry seed," +
@@ -66,6 +67,7 @@ public class ModifiedLeftClickDropper extends Plugin
 
 		if (fishingMode) {
 			itemList.addAll(fishingModeDrops);
+			excludeList.addAll(fishingModeExclusions);
 		}
 		if (masterFarmerMode) {
 			itemList.addAll(masterFarmerModeDrops);
